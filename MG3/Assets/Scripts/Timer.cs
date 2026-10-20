@@ -1,4 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -11,7 +12,7 @@ public class Timer : MonoBehaviour
     //
     // Make sure to TUNE this value in the INSPECTOR after you create it!
 
-    private float timeLeft;
+    public float timeLeft;
 
     // STEP 1 -----------------------------------------------------------------
 
@@ -24,43 +25,44 @@ public class Timer : MonoBehaviour
     //      should start with.
     // It does not have any output.
     // 
-    public bool BeginTimer(float x);
+    public void startTimer(float x)
     {
     // Inside the method here, set the value of our timer member variable to
     // the countdown start time parameter.
-
+    //note- semicolons dont need to be added at end of method declaration
+    timeLeft = x;
 
     }
+}
+// STEP 2 -----------------------------------------------------------------
 
-    // STEP 2 -----------------------------------------------------------------
-
-    // STEP 3 -----------------------------------------------------------------
-    // Uncomment the line below and fill in the ???s to create this method.
-    //
-    // In this method, we will subtract the amount of time that has passed from
-    //      our timer variable EVERY FRAME.
-    // This is how we keep track of time.
-    //
-    // The method's name is a built-in one from Unity that runs EVERY FRAME.
-    // It has no input or output.
-    //
-    private float timePassed();
+// STEP 3 -----------------------------------------------------------------
+// Uncomment the line below and fill in the ???s to create this method.
+//
+// In this method, we will subtract the amount of time that has passed from
+//      our timer variable EVERY FRAME.
+// This is how we keep track of time.
+//
+// The method's name is a built-in one from Unity that runs EVERY FRAME.
+// It has no input or output.
+//
+private void timePassed();
     {
     // Time.deltaTime is a variable provided to us by Unity that represents
     //      how much time has passed since the last frame.
     // In this method body, use Time.deltaTime to decrease the the value of 
     //      our timer member variable every frame.
-    
+    Time.deltaTime -= 1;
 
     }
 
 // This method can be used to check the value of your time member variable.
 public float GetTimeLeft()
     {
-        // STEP 4 -------------------------------------------------------------
-        // REPLACE this line with a new line of code that reutrns the value of
-        //      your time member variable.
-        return 0;
+    // STEP 4 -------------------------------------------------------------
+    // REPLACE this line with a new line of code that reutrns the value of
+    //      your time member variable.     
+    return Timer.timeLeft;
         // STEP 4 -------------------------------------------------------------
     }
 
@@ -73,4 +75,4 @@ public float GetTimeLeft()
 
 
     // STEP 5 -----------------------------------------------------------------
-}
+//}
